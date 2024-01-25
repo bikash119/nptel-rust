@@ -9,15 +9,7 @@ pub struct Clock {
 impl Display for Clock {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
 
-        if self.hours < 10 && self.minutes < 10{
-            write!(f, "0{}:0{}", self.hours, self.minutes)
-        }else if self.minutes < 10 {
-            write!(f, "{}:0{}", self.hours, self.minutes)
-        }else if self.hours < 10 {
-            write!(f, "0{}:{}", self.hours, self.minutes)
-        }else {
-            write!(f, "{}:{}", self.hours, self.minutes)
-        }
+        write!(f, "{:02}:{:02}", self.hours, self.minutes)
     }
 }
 
