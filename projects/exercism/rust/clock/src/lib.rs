@@ -21,19 +21,17 @@ impl Clock {
             minutes
         );
         let tup = match 0.cmp(&minutes) {
-            Ordering::Greater => if minutes%60 == 0 {(minutes/60,minutes%60)} else {(minutes/60-1,60+minutes%60)},
-            Ordering::Less => (minutes/60,minutes%60),
-            Ordering::Equal => (0,minutes)
+            Ordering::Equal => (0,minutes),
+            _ => (minutes.div_euclid(60),minutes.rem_euclid(60)),
         };
         let temp_hours = hours + tup.0;
         let h_new = match 0.cmp(&temp_hours) {
-            Ordering::Greater => temp_hours%24 +24,
-            Ordering::Less => temp_hours%24,
-            Ordering::Equal => temp_hours
+            Ordering::Equal => temp_hours,
+            _ => temp_hours.rem_euclid(24),
         };
         
         Clock {
-            hours: if h_new==24 {0} else {h_new},
+            hours: h_new,
             minutes: tup.1
         }
     }
