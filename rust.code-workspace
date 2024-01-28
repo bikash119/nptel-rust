@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "projects/exercism/rust/clock"
+		},
+		{
+			"path": "projects/algorithms"
+		},
+		{
+			"path": "projects/exercism/rust/anagram"
+		}
+	],
+	"settings": {}
+}
